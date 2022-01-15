@@ -1,0 +1,9 @@
+dvc
+dvc[gdrive]
+dvc[s3]
+pandas
+scikit-learn
+pytest
+tox
+flake8
+flask
