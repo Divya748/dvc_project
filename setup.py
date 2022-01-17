@@ -12,15 +12,8 @@ setup(
     author_email = "divyaakshay011@gmail.com",
     long_description_content_type = "text/markdown",
     url = "https://github.com/Divya748/dvc_project",
-    package_dir = {"":"src"},
-    packages= find_packages(where = "src"),
+    packages=["src"],
     license="GNU",
     python_requires =">=3.6",
-    install_requires=[
-        'dvc',
-        'dvc[gdrive]'
-        'dvc[s3]',
-        'pandas',
-        'scikit-learn'
-    ]
+    install_requires=['dvc','dvc[gdrive]','dvc[s3]','pandas','scikit-learn']
 )
