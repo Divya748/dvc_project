@@ -2,11 +2,15 @@ import pandas as pd
 import argparse
 import joblib
 import os
+import logging
 from src.utils.common_utils import (
     read_params, 
     create_dir, 
     save_reports )
 from sklearn.linear_model import ElasticNet
+
+logging_str = "[%(asctime)s: %(levelname)s: %(module)s]: %(message)s"
+logging.basicConfig(level=logging.DEBUG, format=logging_str)
 
 
 def train(config_path):
@@ -46,6 +50,7 @@ def train(config_path):
         "l1_ratio": l1_ratio
          }
     joblib.dump(lr,model_path)
+    logging.info(f"model saved at {model_path}")
 
     save_reports(params_file,params)
 
@@ -57,5 +62,7 @@ if __name__ == '__main__':
 
     try:
         data = train(config_path=parsed_args.config)
+        logging.info("training of the model stage is completed")
     except Exception as e:
-        raise e
+        logging.error(e)
+        # raise e
